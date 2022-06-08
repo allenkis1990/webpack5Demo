@@ -1,0 +1,12 @@
+{
+  "name": "txtLoader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "txtLoader.js",
+  "scripts": {
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
