@@ -5,3 +5,5 @@
 seajs.use('./child.js',function(data){
   console.log(data);
 })
+
+//seajs

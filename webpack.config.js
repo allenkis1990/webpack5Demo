@@ -5,12 +5,14 @@ var MiniCssExtractPlugin = require("mini-css-extract-plugin");//提取css到单�
 var CssMinimizerPlugin = require('css-minimizer-webpack-plugin')//压缩css插件
 var WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')//压缩JS
 
-
+//自定义插件
 const AddFavIcoPlugin = require('./plugins/addFavIcoPlugin.js')
 
 var webpack = require('webpack')
 let env = process.env.NODE_ENV
 console.log(env);
+
+
 module.exports = {
   target: "web",//配置web解决dev-server不更新问题
   // mode: 'development',
@@ -35,6 +37,7 @@ module.exports = {
       "@": path.resolve(__dirname, 'src')
     },
   },
+  //自定义loader位置查找配置
   resolveLoader: {
     mainFields:['main'],
     modules: [path.resolve(__dirname,"loaders"),path.resolve(__dirname,"./node_modules")]
@@ -119,13 +122,16 @@ module.exports = {
         }
       }
     }),
+
     new MiniCssExtractPlugin({
       filename: "style/[name].[hash:8].css",
       //异步加载生成的CSS
       chunkFilename: "style/[id].[hash:8].css"}),
+
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns:[path.resolve(__dirname,'dist')]
     }),
+
     new HtmlWebpackPlugin({
       filename: `index.html`,//真正输出的地址output.path+filename=./dist/index.html
       template:path.resolve(__dirname,`index.html`),//INdex的模板

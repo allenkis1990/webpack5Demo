@@ -3,6 +3,6 @@
  */
 
 define(['jquery'],function($){
-  console.log($);
-  return 'hahaha'
+  console.log($,'jquery-child');
+  return 'child!!!'
 })
